@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button } from "../../../../components/ui/button";
 import { Menu, X } from "lucide-react"; // Icons for hamburger menu
 import { motion, AnimatePresence } from "framer-motion"; // For animations
-import logo from "../../../../assets/images/logo.png";
+import logo from "../../../../assets/images/mainLogo.png";
 
 export const Navbar = (): JSX.Element => {
   // State to toggle mobile menu visibility
@@ -16,10 +16,10 @@ export const Navbar = (): JSX.Element => {
   ];
 
   return (
-    <header className="w-full py-5 bg-[#7DD2FF]/45 shadow-md">
-      <div className="container mx-auto flex items-center justify-between px-6">
+    <header className="w-full py-5 bg-[#7DD2FF]/45">
+      <div className="container mx-auto flex items-center justify-between px-12">
         {/* Logo Section */}
-        <img src={logo} alt="Logo" className="h-12 w-auto" />
+        <img src={logo} alt="Logo" className="h-12 w-auto scale-125 " />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-10">

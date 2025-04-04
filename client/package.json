@@ -4,7 +4,7 @@
   "type": "module",
   "name": "Woy Trip",
   "description": "This is the website for best travelling expreience",
-  "homepage": "https://manitejagaddam.github.io/WoyTrip/",
+  "homepage": "https://manitejagaddam.github.io/Woy-Trip/",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
