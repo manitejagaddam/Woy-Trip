@@ -83,13 +83,13 @@ export const WhyChooseUs = (): JSX.Element => {
                 //     ? "bg-white shadow-lg border border-gray-200"
                 //     : "bg-white"
                 // }`
-                className={`flex items-center gap-6 p-4 rounded-xl transition-all duration-300
-                  ${
-                    feature.isHighlighted
-                      ? "bg-white shadow-lg border border-gray-200"
-                      : "bg-white"
-                  }
-                  hover:bg-gray-100 hover:shadow-md hover:border-gray-300`}
+                // className={`flex items-center gap-6 p-4 rounded-xl transition-all duration-300
+                //   ${
+                //     feature.isHighlighted
+                //       ? "bg-white shadow-lg border border-gray-200"
+                //       : "bg-white"
+                //   }
+                //   hover:bg-gray-100 hover:shadow-md hover:border-gray-300`}
                 className={`flex items-center gap-6 p-4 rounded-xl transition-all duration-300
                   ${
                     feature.isHighlighted
