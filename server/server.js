@@ -11,6 +11,9 @@ import { corsOptions, corsLogger } from './config/corsConfig.js';
 import adminRoutes from './routes/adminRoutes.js';
 import cardRouter from './routes/cardRoutes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
+import mailRoutes from './routes/mailRoutes.js';
+
+
 
 // Configure environment variables
 dotenv.config();
@@ -40,6 +43,7 @@ app.options('*', cors(corsOptions)); // Handle preflight requests
 // API routes with versioning
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/cards', cardRouter);
+app.use('/api/v1/mail', mailRoutes);
 
 // Global error handler
 app.use(errorHandler);
