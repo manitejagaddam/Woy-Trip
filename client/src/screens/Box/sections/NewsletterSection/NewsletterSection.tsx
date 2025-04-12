@@ -58,7 +58,7 @@ export const NewsletterSection = (): JSX.Element => {
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
       <Card
-        className="w-full max-w-5xl mx-auto relative overflow-visible border-none shadow-lg bg-blue-50 p-10 sm:p-20 md:p-32 rounded-2xl"
+        className="w-full max-w-7xl mx-auto relative overflow-visible border-none shadow-lg bg-blue-50 p-10 sm:p-20 md:p-32 rounded-2xl"
         id="contact"
       >
         <motion.img
@@ -72,7 +72,7 @@ export const NewsletterSection = (): JSX.Element => {
 
         <CardContent className="p-0 border-none text-center">
           <motion.h2
-            className="font-semibold text-gray-800 text-[28px] sm:text-[33px] leading-snug"
+            className="font-semibold text-gray-800 text-[30px] sm:text-[33px] leading-snug"
             initial={{ opacity: 0, y: -30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.2 }}

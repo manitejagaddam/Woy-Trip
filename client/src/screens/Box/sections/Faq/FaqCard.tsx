@@ -65,7 +65,7 @@ const FaqCard = () => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <Card className="w-full max-w-5xl mx-auto border-none shadow-lg bg-blue-50 p-10 rounded-2xl">
+      <Card className="w-full max-w-7xl mx-auto border-none shadow-lg bg-blue-50 p-10 rounded-2xl">
         <CardContent className="p-0 border-none text-center">
           <motion.h2
             className="font-semibold text-gray-800 text-[30px] sm:text-[36px] leading-snug"

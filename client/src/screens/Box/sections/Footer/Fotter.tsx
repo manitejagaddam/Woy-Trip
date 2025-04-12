@@ -162,7 +162,7 @@ export const Footer = (): JSX.Element => {
   const socialMedia = [
     {
       icon: <InstagramIcon size={28} />,
-      href: "https://www.instagram.com/yourprofile", // replace with actual link
+      href: "https://www.instagram.com/woytrip/profilecard/?igsh=ZjhkbnlvOHZvYWlu", // replace with actual link
     },
     {
       icon: <MailIcon size={28} />,

@@ -5,7 +5,7 @@ import hero from "../../../../assets/images/1.png"
 
 export const HeroSection = (): JSX.Element => {
   return (
-    <section className="pt-10 relative w-full min-h-screen bg-gradient-to-b from-[#7DD2FF]/45 to-transparent">
+    <section className="pt-10 relative w-full min-h-screen bg-gradient-to-b from-[#7DD2FF]/45 to-transparent overflow-hidden">
       {/* Hero Content Wrapper */}
       <div className="container mx-auto flex flex-col-reverse lg:flex-row items-center justify-between px-6 lg:px-20">
         
