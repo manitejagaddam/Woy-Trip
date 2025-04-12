@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaBus, FaHotel } from "react-icons/fa";
 import {
   GiVideoCamera,
@@ -15,7 +15,40 @@ interface Props {
   cards: CardType[];
 }
 
+const sendInquiry = async (card: CardType) => {
+  const phoneNumber = "918885523545";
+
+  const message = `I need to go to ${card.title} and I need further details.`;
+
+  // WhatsApp
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  window.open(whatsappURL, "_blank");
+
+  // Email
+  try {
+    const res = await fetch("http://localhost:5000/api/v1/mail/send", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        destination: card.title,
+        message, // same message
+      }),
+    });
+
+    if (res.ok) {
+      console.log("✅ Email sent successfully!");
+    } else {
+      console.error("❌ Email failed:", await res.text());
+    }
+  } catch (err) {
+    console.error("❌ Error sending email:", err);
+  }
+};
+
 export const DestinationCardsSection: React.FC<Props> = ({ cards }) => {
+const [title, setTitile] = useState("");
   const phoneNumber = 918885523545;
   return (
     <main className="max-w-7xl mx-auto px-6 py-8" id="destinations">
@@ -46,13 +79,6 @@ export const DestinationCardsSection: React.FC<Props> = ({ cards }) => {
           className="hidden xl:block scale-90 hover:scale-95 transition-all duration-300"
         />
       </div>
-
-      {/* <h2 className="text-6xl font-bold text-[#333333] sm:text-6xl mb-2 text-center">
-        Our Destinations
-      </h2>
-      <h3 className="text-3xl text-gray-700 sm:text-3xl mb-10 text-center">
-        We Organize Your Trips!
-      </h3> */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {cards.map((card) => (
           <div
@@ -131,7 +157,7 @@ export const DestinationCardsSection: React.FC<Props> = ({ cards }) => {
               </div>
 
               {/* WhatsApp Button */}
-              <div className="mt-6 flex justify-center items-center rounded">
+              {/* <div className="mt-6 flex justify-center items-center rounded">
                 <a
                   href={`https://wa.me/${phoneNumber}?text=Hello!%20I'm%20interested%20in%20${encodeURIComponent(
                     card.title
@@ -143,6 +169,16 @@ export const DestinationCardsSection: React.FC<Props> = ({ cards }) => {
                   <FaWhatsapp size={18} />
                   Chat with Us
                 </a>
+              </div> */}
+
+              <div className="mt-6 flex justify-center items-center rounded">
+                <button
+                   onClick={() => sendInquiry(card)}
+                  className="flex items-center justify-center w-full gap-2 bg-blue-500 text-white px-3 py-2 rounded-full hover:bg-blue-600 transition duration-300"
+                >
+                  <FaWhatsapp size={18} />
+                  Chat & Email Us
+                </button>
               </div>
             </div>
           </div>
