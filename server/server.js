@@ -13,6 +13,8 @@ import cardRouter from './routes/cardRoutes.js';
 import { errorHandler } from './middlewares/errorHandler.js';
 import mailRoutes from './routes/mailRoutes.js';
 
+import placesMail from './routes/placesMail.js'
+
 
 
 // Configure environment variables
@@ -44,6 +46,7 @@ app.options('*', cors(corsOptions)); // Handle preflight requests
 app.use('/api/v1/admin', adminRoutes);
 app.use('/api/v1/cards', cardRouter);
 app.use('/api/v1/mail', mailRoutes);
+app.use('/api/v1/places', placesMail);
 
 // Global error handler
 app.use(errorHandler);
