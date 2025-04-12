@@ -123,7 +123,7 @@ interface Props {
 export const DestinationCardsSection: React.FC<Props> = ({ cards }) => {
   const phoneNumber = 918885523545;
   return (
-    <main className="max-w-7xl mx-auto px-6 py-8">
+    <main className="max-w-7xl mx-auto px-6 py-8" id="destinations">
       {/* // <main className="max-w-full mx-auto px-6 py-8"> */}
 
       <div className="flex flex-row items-center justify-center gap-4">

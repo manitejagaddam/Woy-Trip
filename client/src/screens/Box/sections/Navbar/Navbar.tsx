@@ -10,9 +10,9 @@ export const Navbar = (): JSX.Element => {
 
   // Navigation menu items
   const navItems = [
-    { label: "Home", href: "#home" },
-    { label: "Contact Us", href: "#contact" },
-    { label: "About Us", href: "#about" },
+    { label: "Home", href: "/" },
+    { label: "Contact Us", href: "/#contact" },
+    { label: "About Us", href: "/about" },
   ];
 
   return (
@@ -35,9 +35,11 @@ export const Navbar = (): JSX.Element => {
         </nav>
 
         {/* CTA Button for Desktop */}
+        <a href="/#destinations">
         <Button className="hidden md:block bg-[#42a7c3] hover:bg-[#3a96af] text-white font-bold px-6 py-2 rounded-lg">
           Make Trip
         </Button>
+        </a>
 
         {/* Mobile Menu Toggle Button */}
         <button
@@ -69,9 +71,11 @@ export const Navbar = (): JSX.Element => {
             ))}
 
             {/* CTA Button in Mobile Menu */}
+              <a href="/#destionations">
             <Button className="bg-[#42a7c3] hover:bg-[#3a96af] text-white font-bold px-6 py-2 rounded-lg">
-              Make Trip
+                Make Trip
             </Button>
+              </a>
           </motion.div>
         )}
       </AnimatePresence>

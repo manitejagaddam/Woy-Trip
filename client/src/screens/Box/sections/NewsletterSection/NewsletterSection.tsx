@@ -126,9 +126,6 @@
 //   );
 // };
 
-
-
-
 import { useState } from "react";
 import { Mail, MapPin, List, Phone, User } from "lucide-react";
 import { Button } from "../../../../components/ui/button";
@@ -146,13 +143,53 @@ export const NewsletterSection = (): JSX.Element => {
   const [persons, setPersons] = useState("");
   const [amenities, setAmenities] = useState("");
 
-  const sendWhatsAppMessage = () => {
-    const phoneNumber = "918885523545"; // Replace with your WhatsApp number
+  // const sendWhatsAppMessage = () => {
+  //   const phoneNumber = "918885523545"; // Replace with your WhatsApp number
+
+  //   const message = `*Travel Inquiry Request*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📧 *Email:* ${email}\n📍 *Travel Location:* ${location}\n📅 *Duration:* ${days} day(s)\n👥 *No. of Persons:* ${persons}\n🧳 *Preferred Amenities:* ${amenities}\n\nKindly share the available travel packages or a custom quote based on the above details.\n\nThank you.`;
+
+  //   const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  //   window.open(whatsappURL, "_blank");
+  // };
+
+  const sendInquiry = async () => {
+    const phoneNumber = "918885523545";
 
     const message = `*Travel Inquiry Request*\n\n👤 *Name:* ${name}\n📞 *Phone:* ${phone}\n📧 *Email:* ${email}\n📍 *Travel Location:* ${location}\n📅 *Duration:* ${days} day(s)\n👥 *No. of Persons:* ${persons}\n🧳 *Preferred Amenities:* ${amenities}\n\nKindly share the available travel packages or a custom quote based on the above details.\n\nThank you.`;
 
-    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+    // Send to WhatsApp
+    const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(whatsappURL, "_blank");
+
+    // Send to Email
+    try {
+      const res = await fetch("http://localhost:5000/api/v1/mail/send", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name,
+          phone,
+          email,
+          location,
+          days,
+          persons,
+          amenities,
+        }),
+      });
+
+      const result = await res.text();
+      console.log(result);
+      console.log(res);
+
+      alert("Email sent successfully!");
+    } catch (err) {
+      console.error("❌ Error sending email:", error.message);
+      console.error(error);
+    }
   };
 
   return (
@@ -163,7 +200,10 @@ export const NewsletterSection = (): JSX.Element => {
       viewport={{ once: true }}
       transition={{ duration: 0.6, ease: "easeOut" }}
     >
-      <Card className="w-full max-w-5xl mx-auto relative overflow-visible border-none shadow-lg bg-blue-50 p-10 sm:p-20 md:p-32 rounded-2xl">
+      <Card
+        className="w-full max-w-5xl mx-auto relative overflow-visible border-none shadow-lg bg-blue-50 p-10 sm:p-20 md:p-32 rounded-2xl"
+        id="contact"
+      >
         <motion.img
           src={areoplane}
           className="absolute top-[-20px] right-[-20px] w-16 sm:w-20 md:w-24"
@@ -270,7 +310,7 @@ export const NewsletterSection = (): JSX.Element => {
 
             {/* Button */}
             <Button
-              onClick={sendWhatsAppMessage}
+              onClick={sendInquiry}
               className="h-[50px] bg-blue-600 hover:bg-blue-700 text-white text-[16px] rounded-lg mt-4"
             >
               Get Quote
