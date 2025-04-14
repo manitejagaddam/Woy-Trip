@@ -52,7 +52,7 @@ export const Box = (): JSX.Element => {
   return (
     <div className="w-full">
       <div className="relative w-full">
-        <Navbar />
+        {/* <Navbar /> */}
 
         <HeroSection />
 

@@ -107,7 +107,7 @@ const TestimonialCard = () => {
           {duplicatedTestimonials.map((testimonial, i) => (
             <div
               key={`${testimonial.id}-${i}`}
-              className="lg:min-w-[50%] min-w-full bg-blue-50 p-6 rounded-2xl shadow-lg relative"
+              className="lg:min-w-[35%] min-w-[35%] bg-blue-50 p-6 rounded-2xl shadow-lg relative"
             >
               {/* Profile Image */}
               <div className="absolute -top-8 left-6 w-16 h-16 rounded-full border-4 border-white overflow-hidden">
