@@ -24,7 +24,7 @@ export default defineConfig({
   plugins: [react()],
   
   // Correct the base path for GitHub Pages
-  base: '/Woy-Trip/',  // This should match your repository name exactly
+  base: '/',  // This should match your repository name exactly
 
   publicDir: 'public', // Ensure your static assets are inside the public folder
 
