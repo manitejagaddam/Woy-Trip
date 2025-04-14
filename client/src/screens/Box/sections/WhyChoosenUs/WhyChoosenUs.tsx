@@ -14,7 +14,7 @@ export const WhyChooseUs = (): JSX.Element => {
   const features = [
     {
       id: 1,
-      title: "24/7 Doctor Support",
+      title: "24/7 Doctor Support Over Mobile",
       description: "Instant medical help for minor health issues.",
       icon: hosplital,
       isHighlighted: false,
