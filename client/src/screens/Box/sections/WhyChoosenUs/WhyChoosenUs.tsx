@@ -6,7 +6,7 @@ import areoplane from "../../../../assets/images/areoplane.png";
 import hotel from "../../../../assets/images/hotel.png";
 import luggage from "../../../../assets/images/luggage.png";
 // import logo from "../../../../assets/images/why_choosen.png"
-import logo from "../../../../assets/images/why_choose_us.png";
+import logo from "../../../../assets/images/bear.png";
 import areoplane_logo from "../../../../assets/images/why_choosen_us_areoplane.png";
 // import logo from
 
