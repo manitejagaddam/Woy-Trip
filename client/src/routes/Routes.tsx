@@ -6,6 +6,7 @@ import ProtectedRoute from "../components/ui/Admin/ProtectedRoute";
 import { Box } from "../screens/Box";
 import { About } from "../screens/Box/About";
 import { Outlet } from "react-router-dom";
+import ErrorPage from "../screens/Box/sections/ErrorPage/ErrorPage";
 
 // Create a layout component with AuthProvider
 const RootLayout = () => (
@@ -21,14 +22,17 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Box />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "/about",
         element: <About />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "/admin/login",
         element: <AdminLogin />,
+        errorElement: <ErrorPage />,
       },
       {
         path: "/admin/dashboard",
@@ -37,6 +41,11 @@ const router = createBrowserRouter([
             <AdminDashboard />
           </ProtectedRoute>
         ),
+        errorElement: <ErrorPage />,
+      },
+      {
+        path: "*", // 👈 catch-all route for undefined paths
+        element: <ErrorPage />,
       },
     ],
   },
