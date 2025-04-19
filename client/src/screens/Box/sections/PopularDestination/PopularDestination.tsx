@@ -122,11 +122,21 @@ export const PopularDestination: React.FC<Props> = ({ cards }) => {
 
               {/* Card Content */}
               <div className="p-4">
-                <h3 className="text-lg font-bold text-gray-800 mb-1">
-                  {card.title}
-                </h3>
-                <div className="flex items-center gap-2 text-blue-600 text-sm mb-3">
-                  <FaBus /> <span className="font-medium">{card.location}</span>
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-gray-800 mb-1">
+                    {card.title}
+                  </h3>
+
+                  <div className="flex items-center justify-between mt-1 mb-1">
+                    <span className="text-lg font-bold text-blue-600">
+                      ₹{card.price}{" "}
+                      <span className="text-sm text-gray-500">/ person</span>
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-blue-600">
+                    <FaBus className="text-sm" />
+                    <span className="text-sm font-medium">{card.location}</span>
+                  </div>
                 </div>
 
                 {/* Features */}

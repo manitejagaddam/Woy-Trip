@@ -35,24 +35,26 @@ const AdminDashboard = () => {
     }
   }, [isAuthenticated]);
 
-// Update the fetchCards function to force fresh data
-const fetchCards = async () => {
-  try {
-    const response = await api.get<CardType[]>("/cards", {
-      params: { timestamp: Date.now() } // Cache buster
-    });
-    
-    // Create new array references for React state
-    setCards(response.data.map(card => ({
-      ...card,
-      features: card.features || {},
-      // Ensure images array is new reference
-      images: [...card.images] 
-    })));
-  } catch (error) {
-    console.error("Error fetching cards:", error);
-  }
-};
+  // Update the fetchCards function to force fresh data
+  const fetchCards = async () => {
+    try {
+      const response = await api.get<CardType[]>("/cards", {
+        params: { timestamp: Date.now() }, // Cache buster
+      });
+
+      // Create new array references for React state
+      setCards(
+        response.data.map((card) => ({
+          ...card,
+          features: card.features || {},
+          // Ensure images array is new reference
+          images: [...card.images],
+        }))
+      );
+    } catch (error) {
+      console.error("Error fetching cards:", error);
+    }
+  };
 
   const handleDelete = async (id: string) => {
     try {
@@ -129,7 +131,7 @@ const fetchCards = async () => {
                   Popular
                 </div>
               )}
-              
+
               <div className="relative aspect-video overflow-hidden rounded-t-2xl">
                 <div className="flex h-full">
                   {card.images.map((image, idx) => (
@@ -149,6 +151,14 @@ const fetchCards = async () => {
                     <h3 className="text-xl font-bold text-gray-800 mb-1">
                       {card.title}
                     </h3>
+
+
+                    <span className="text-lg font-bold text-blue-600">
+                    ₹{card.price}
+                      <span className="text-sm text-gray-500">/ person</span>
+                    </span>
+
+
                     <div className="flex items-center gap-2 text-blue-600">
                       <FaBus className="text-sm" />
                       <span className="text-sm font-medium">

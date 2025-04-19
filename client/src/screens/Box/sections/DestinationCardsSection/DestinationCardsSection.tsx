@@ -1,6 +1,11 @@
 import React, { useRef, useState, useEffect } from "react";
 import { FaBus, FaHotel, FaWhatsapp } from "react-icons/fa";
-import { GiVideoCamera, GiMeal, GiSightDisabled, GiMedicalPackAlt } from "react-icons/gi";
+import {
+  GiVideoCamera,
+  GiMeal,
+  GiSightDisabled,
+  GiMedicalPackAlt,
+} from "react-icons/gi";
 import { FiStar } from "react-icons/fi";
 import { CardType } from "../../types/card";
 import left_areoplane from "../../../../assets/images/our_destination_left_Areoplane.png";
@@ -11,8 +16,13 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 // Feature item component
-const Feature: React.FC<{ icon: JSX.Element; label: string }> = ({ icon, label }) => (
-  <div className="flex items-center gap-2">{icon} {label}</div>
+const Feature: React.FC<{ icon: JSX.Element; label: string }> = ({
+  icon,
+  label,
+}) => (
+  <div className="flex items-center gap-2">
+    {icon} {label}
+  </div>
 );
 
 interface Props {
@@ -22,7 +32,9 @@ interface Props {
 const sendInquiry = (card: CardType) => {
   const phoneNumber = "918885523545";
   const message = `I need to go to ${card.title} and I need further details.`;
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(
+    message
+  )}`;
   window.open(whatsappURL, "_blank");
 };
 
@@ -50,7 +62,10 @@ export const DestinationCardsSection: React.FC<Props> = ({ cards }) => {
         />
       </div>
 
-      <div className="grid gap-6" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}>
+      <div
+        className="grid gap-6"
+        style={{ gridTemplateColumns: "repeat(auto-fit, minmax(300px, 1fr))" }}
+      >
         {cards.map((card) => {
           const swiperRef = useRef<any>(null);
           const [isHovered, setIsHovered] = useState(false); // State to manage hover
@@ -113,21 +128,65 @@ export const DestinationCardsSection: React.FC<Props> = ({ cards }) => {
 
               {/* Card Content */}
               <div className="p-4">
-                <h3 className="text-lg font-bold text-gray-800 mb-1">{card.title}</h3>
-                <div className="flex items-center gap-2 text-blue-600 text-sm mb-3">
-                  <FaBus /> <span className="font-medium">{card.location}</span>
+                <div className="mb-4">
+                  <h3 className="text-xl font-bold text-gray-800 mb-1">
+                    {card.title}
+                  </h3>
+
+                  <div className="flex items-center justify-between mt-1 mb-1">
+                    <span className="text-lg font-bold text-blue-600">
+                      ₹{card.price}{" "}
+                      <span className="text-sm text-gray-500">/ person</span>
+                    </span>
+                  </div>
+                  <div className="flex items-center gap-2 text-blue-600">
+                    <FaBus className="text-sm" />
+                    <span className="text-sm font-medium">{card.location}</span>
+                  </div>
                 </div>
 
                 {/* Features */}
                 <div className="border-t pt-3 mt-3">
-                  <h4 className="text-sm font-semibold text-gray-600 mb-2">Features:</h4>
+                  <h4 className="text-sm font-semibold text-gray-600 mb-2">
+                    Features:
+                  </h4>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-2 text-sm text-gray-600">
-                    {card.features?.video && <Feature icon={<GiVideoCamera className="text-blue-500" />} label="Video" />}
-                    {card.features?.meals && <Feature icon={<GiMeal className="text-green-500" />} label="Meals" />}
-                    {card.features?.stay && <Feature icon={<FaHotel className="text-purple-500" />} label="Stay" />}
-                    {card.features?.sightseeing && <Feature icon={<GiSightDisabled className="text-orange-500" />} label="Tours" />}
-                    {card.features?.medical && <Feature icon={<GiMedicalPackAlt className="text-red-500" />} label="Medical" />}
-                    {card.features?.transport && <Feature icon={<FaBus className="text-teal-500" />} label="Transport" />}
+                    {card.features?.video && (
+                      <Feature
+                        icon={<GiVideoCamera className="text-blue-500" />}
+                        label="Video"
+                      />
+                    )}
+                    {card.features?.meals && (
+                      <Feature
+                        icon={<GiMeal className="text-green-500" />}
+                        label="Meals"
+                      />
+                    )}
+                    {card.features?.stay && (
+                      <Feature
+                        icon={<FaHotel className="text-purple-500" />}
+                        label="Stay"
+                      />
+                    )}
+                    {card.features?.sightseeing && (
+                      <Feature
+                        icon={<GiSightDisabled className="text-orange-500" />}
+                        label="Tours"
+                      />
+                    )}
+                    {card.features?.medical && (
+                      <Feature
+                        icon={<GiMedicalPackAlt className="text-red-500" />}
+                        label="Medical"
+                      />
+                    )}
+                    {card.features?.transport && (
+                      <Feature
+                        icon={<FaBus className="text-teal-500" />}
+                        label="Transport"
+                      />
+                    )}
                   </div>
                 </div>
 
