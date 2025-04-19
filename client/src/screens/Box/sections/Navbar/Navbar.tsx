@@ -143,32 +143,33 @@ export const Navbar = (): JSX.Element => {
 
       {/* Mobile Navigation Menu */}
       <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, height: 0 }}
-            animate={{ opacity: 1, height: "auto" }}
-            exit={{ opacity: 0, height: 0 }}
-            className="md:hidden bg-white shadow-lg absolute top-[70px] left-0 w-full flex flex-col items-center py-5 space-y-4 z-50"
-          >
-            {navItems.map((item, index) => (
-              <a
-                key={index}
-                href={item.href}
-                className="font-medium text-white bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] py-2 px-6 rounded-lg text-lg hover:opacity-80 transition-all"
-              >
-                {item.label}
-              </a>
-            ))}
+  {isOpen && (
+    <motion.div
+      initial={{ opacity: 0, height: 0 }}
+      animate={{ opacity: 1, height: "auto" }}
+      exit={{ opacity: 0, height: 0 }}
+      className="md:hidden bg-transparent shadow-lg absolute top-[70px] left-0 w-full flex flex-col items-end pr-6 py-5 space-y-4 z-50"
+    >
+      {navItems.map((item, index) => (
+        <a
+          key={index}
+          href={item.href}
+          className="font-medium text-white bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] py-1 px-4 rounded-lg text-lg hover:opacity-80 transition-all"
+        >
+          {item.label}
+        </a>
+      ))}
 
-            {/* CTA Button in Mobile Menu */}
-            <a href="/#destinations">
-              <Button className="bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] text-white font-bold px-6 py-2 rounded-lg hover:opacity-80 transition-all">
-                Make Trip
-              </Button>
-            </a>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      {/* CTA Button in Mobile Menu */}
+      <a href="/#destinations">
+        <Button className="bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] text-white font-bold px-4 py-1 rounded-lg hover:opacity-80 transition-all">
+          Make Trip
+        </Button>
+      </a>
+    </motion.div>
+  )}
+</AnimatePresence>
+
     </header>
   );
 };
