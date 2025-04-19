@@ -1,5 +1,5 @@
-import multer from 'multer';
-import { AppError } from '../utils/appError.js';
+import multer from "multer";
+import { AppError } from "../utils/appError.js";
 
 // Memory storage (for direct cloud upload)
 const storage = multer.memoryStorage();
@@ -13,7 +13,9 @@ const fileFilter = (req, file, cb) => {
   if (extname && mimetype) {
     cb(null, true);
   } else {
-    cb(new AppError('Unsupported file format. Please upload an image file.', 400));
+    cb(
+      new AppError("Unsupported file format. Please upload an image file.", 400)
+    );
   }
 };
 

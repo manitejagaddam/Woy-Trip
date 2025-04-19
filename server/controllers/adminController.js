@@ -1,8 +1,8 @@
-import Admin from '../models/Admin.js';
-import jwt from 'jsonwebtoken';
-import { catchAsync } from '../utils/catchAsync.js';
-import { AppError } from '../utils/appError.js';
-import dotenv from 'dotenv';
+import Admin from "../models/Admin.js";
+import jwt from "jsonwebtoken";
+import { catchAsync } from "../utils/catchAsync.js";
+import { AppError } from "../utils/appError.js";
+import dotenv from "dotenv";
 
 dotenv.config();
 
@@ -19,7 +19,8 @@ export const registerAdmin = catchAsync(async (req, res, next) => {
   if (adminExists) return next(new AppError("Admin already exists", 400));
 
   const adminCount = await Admin.countDocuments();
-  if (adminCount > 0) return next(new AppError("Only one admin account allowed", 400));
+  if (adminCount > 0)
+    return next(new AppError("Only one admin account allowed", 400));
 
   const admin = await Admin.create({ username, password });
   const token = generateToken(admin._id);
@@ -49,17 +50,14 @@ export const loginAdmin = catchAsync(async (req, res, next) => {
   });
 });
 
-
-
-
 // Add this logout controller
 export const logoutAdmin = catchAsync(async (req, res, next) => {
-  const token = req.headers.authorization?.split(' ')[1];
-  if (!token) return next(new AppError('No token provided', 400));
+  const token = req.headers.authorization?.split(" ")[1];
+  if (!token) return next(new AppError("No token provided", 400));
 
   const admin = await Admin.findById(req.admin._id);
-  admin.tokens = admin.tokens.filter(t => t.token !== token);
+  admin.tokens = admin.tokens.filter((t) => t.token !== token);
   await admin.save();
 
-  res.status(200).json({ message: 'Logged out successfully' });
+  res.status(200).json({ message: "Logged out successfully" });
 });
