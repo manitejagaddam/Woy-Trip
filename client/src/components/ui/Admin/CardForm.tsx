@@ -145,7 +145,7 @@ const CardForm = ({
   
       // Append new images with proper field management
       formData.images.forEach((file, index) => {
-        formPayload.append(images, file); // Field name must match backend expectation
+        formPayload.append(`images`, file); // Field name must match backend expectation
       });
   
       if (selectedCard) {
