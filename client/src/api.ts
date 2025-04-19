@@ -1,10 +1,11 @@
-import axios, { AxiosInstance, InternalAxiosRequestConfig, AxiosError } from 'axios';
-
-
+import axios, {
+  AxiosInstance,
+  InternalAxiosRequestConfig,
+  AxiosError,
+} from "axios";
 
 const api: AxiosInstance = axios.create({
-  baseURL: 'http://localhost:5000/api/v1',
-  
+  baseURL: "http://localhost:5000/api/v1",
 });
 
 interface ErrorResponse {
@@ -13,7 +14,7 @@ interface ErrorResponse {
 }
 
 api.interceptors.request.use((config: InternalAxiosRequestConfig) => {
-  const token = localStorage.getItem('adminToken');
+  const token = localStorage.getItem("adminToken");
   if (token && config.headers) {
     config.headers.Authorization = `Bearer ${token}`;
   }
@@ -24,8 +25,8 @@ api.interceptors.response.use(
   (response) => response,
   (error: AxiosError<ErrorResponse>) => {
     if (error.response?.status === 401) {
-      localStorage.removeItem('adminToken');
-      window.location.href = '/admin/login';
+      localStorage.removeItem("adminToken");
+      window.location.href = "/admin/login";
     }
     return Promise.reject(error);
   }

@@ -23,7 +23,7 @@ const CardForm = ({
   const [formData, setFormData] = useState({
     title: "",
     location: "",
-    price:"",
+    price: "",
     images: [] as File[],
     features: {
       video: false,
@@ -47,7 +47,7 @@ const CardForm = ({
       setFormData({
         title: selectedCard.title,
         location: selectedCard.location,
-        price:selectedCard.price,
+        price: selectedCard.price,
         images: [],
         features: selectedCard.features,
         popular: selectedCard.popular,
@@ -78,16 +78,18 @@ const CardForm = ({
   };
 
   const handleRemoveExistingImage = (publicId: string) => {
-    if (!publicId.startsWith('card_gallery/')) {
+    if (!publicId.startsWith("card_gallery/")) {
       toast.error("Invalid image identifier");
       return;
     }
-    
-    setFormData(prev => ({
+
+    setFormData((prev) => ({
       ...prev,
-      deleteImages: [...prev.deleteImages, publicId]
+      deleteImages: [...prev.deleteImages, publicId],
     }));
-    setExistingImages(prev => prev.filter(img => img.publicId !== publicId));
+    setExistingImages((prev) =>
+      prev.filter((img) => img.publicId !== publicId)
+    );
   };
 
   const handleFeatureChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -102,7 +104,7 @@ const CardForm = ({
       title: "",
       location: "",
       images: [],
-      price:"",
+      price: "",
       features: {
         video: false,
         meals: false,
@@ -120,78 +122,85 @@ const CardForm = ({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-  
+
     if (!selectedCard && formData.images.length === 0) {
       toast.error("Please upload at least one image");
       return;
     }
-  
+
     setIsSubmitting(true);
-  
+
     try {
       const formPayload = new FormData();
-      
+
       // Append core fields
       formPayload.append("title", formData.title);
       formPayload.append("location", formData.location);
       formPayload.append("price", formData.price);
       formPayload.append("popular", formData.popular.toString());
       formPayload.append("features", JSON.stringify(formData.features));
-  
+
       // Handle image deletions for updates
       if (selectedCard && formData.deleteImages.length > 0) {
-        formPayload.append("deleteImages", JSON.stringify(formData.deleteImages));
+        formPayload.append(
+          "deleteImages",
+          JSON.stringify(formData.deleteImages)
+        );
       }
-  
+
       // Append new images with proper field management
       formData.images.forEach((file, index) => {
         formPayload.append(`images`, file); // Field name must match backend expectation
       });
-  
+
       if (selectedCard) {
         // Update existing card
         const { data: updatedCard } = await api.put<CardType>(
-          `/cards/${selectedCard._id}`, 
+          `/cards/${selectedCard._id}`,
           formPayload // Remove explicit headers
         );
-  
-        setCards(prev => prev.map(card => 
-          card._id === updatedCard._id ? {
-            ...updatedCard,
-            images: updatedCard.images.filter(img => 
-              !formData.deleteImages.includes(img.publicId))
-          } : card
-        ));
+
+        setCards((prev) =>
+          prev.map((card) =>
+            card._id === updatedCard._id
+              ? {
+                  ...updatedCard,
+                  images: updatedCard.images.filter(
+                    (img) => !formData.deleteImages.includes(img.publicId)
+                  ),
+                }
+              : card
+          )
+        );
         toast.success("Destination updated successfully!");
       } else {
         // Create new card
         const { data: newCard } = await api.post<CardType>(
-          "/cards/upload", 
+          "/cards/upload",
           formPayload // Remove explicit headers
         );
-        setCards(prev => [...prev, newCard]);
+        setCards((prev) => [...prev, newCard]);
         toast.success("Destination created successfully!");
       }
-  
+
       onClose();
     } catch (error: any) {
       const errorDetails = error.response?.data || {};
-      const message = errorDetails.message || 
-                      errorDetails.error?.message || 
-                      "Operation failed. Please try again.";
-      
+      const message =
+        errorDetails.message ||
+        errorDetails.error?.message ||
+        "Operation failed. Please try again.";
+
       console.error("Submission error details:", {
         error: error.response?.data,
-        request: error.config
+        request: error.config,
       });
-      
+
       toast.error(message);
     } finally {
       setIsSubmitting(false);
     }
   };
-
-
 
   return (
     <form
@@ -246,25 +255,24 @@ const CardForm = ({
               />
             </div>
 
-
             <div>
-    <label className="block text-sm font-medium text-gray-700 mb-2">
-      Price per Person
-    </label>
-    <input
-      type="number"
-      required
-      className="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
-      value={formData.price}
-      onChange={(e) =>
-        setFormData(prev => ({ 
-          ...prev, 
-          price: e.target.value
-        }))
-      }
-      min="0"
-    />
-  </div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                Price per Person
+              </label>
+              <input
+                type="number"
+                required
+                className="w-full px-4 py-2.5 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-blue-500 outline-none"
+                value={formData.price}
+                onChange={(e) =>
+                  setFormData((prev) => ({
+                    ...prev,
+                    price: e.target.value,
+                  }))
+                }
+                min="0"
+              />
+            </div>
           </div>
 
           {/* Updated Image Upload Section */}

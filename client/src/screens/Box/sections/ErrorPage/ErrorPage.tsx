@@ -16,12 +16,16 @@ const ErrorPage = () => {
         <FaPlaneDeparture />
       </div>
 
-      <h1 className="text-4xl sm:text-5xl font-bold text-red-600 mb-2">Oops! Flight Delayed 🚫</h1>
-      <p className="text-xl text-gray-800">{status} - {message}</p>
+      <h1 className="text-4xl sm:text-5xl font-bold text-red-600 mb-2">
+        Oops! Flight Delayed 🚫
+      </h1>
+      <p className="text-xl text-gray-800">
+        {status} - {message}
+      </p>
 
       <p className="mt-6 text-lg text-gray-700 max-w-md">
-        We couldn't take you to your dream destination at the moment. But no worries,
-        let’s navigate back to safety.
+        We couldn't take you to your dream destination at the moment. But no
+        worries, let’s navigate back to safety.
       </p>
 
       <a

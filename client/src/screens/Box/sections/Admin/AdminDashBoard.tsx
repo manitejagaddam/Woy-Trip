@@ -152,12 +152,10 @@ const AdminDashboard = () => {
                       {card.title}
                     </h3>
 
-
                     <span className="text-lg font-bold text-blue-600">
-                    ₹{card.price}
+                      ₹{card.price}
                       <span className="text-sm text-gray-500">/ person</span>
                     </span>
-
 
                     <div className="flex items-center gap-2 text-blue-600">
                       <FaBus className="text-sm" />

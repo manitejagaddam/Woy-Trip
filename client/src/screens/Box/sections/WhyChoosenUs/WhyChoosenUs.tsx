@@ -56,8 +56,6 @@ export const WhyChooseUs = (): JSX.Element => {
 
         {/* Right Section */}
         <div className="w-full">
-
-
           <div className="flex justify-center gap-4">
             {/* Title */}
             <h2 className="text-4xl font-bold text-[#333333] text-center sm:text-5xl md:text-5xl  mb-2">

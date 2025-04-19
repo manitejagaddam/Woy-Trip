@@ -20,9 +20,9 @@ import api from "../../api";
 
 import FaqCard from "./sections/Faq/FaqCard";
 
-import 'swiper/css';
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 interface Card {
   _id: string;

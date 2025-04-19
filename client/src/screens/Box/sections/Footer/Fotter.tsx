@@ -135,4 +135,3 @@ export const Footer = (): JSX.Element => {
     </footer>
   );
 };
-      

@@ -73,7 +73,7 @@ export const FoundersSection = (): JSX.Element => {
             </CardContent>
           </Card>
         </div>
-     </div>
+      </div>
     </section>
   );
 };

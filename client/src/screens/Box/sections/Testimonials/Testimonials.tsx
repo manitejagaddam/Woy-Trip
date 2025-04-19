@@ -31,7 +31,6 @@ const testimonials = [
     message:
       "My trip to Thiruvananthapuram, Kochi, Kanyakumari, Madurai, and Poovar Island with WoyTrip was an unforgettable experience! Every destination was beautifully planned, from the spiritual vibes of Kanyakumari to the scenic backwaters of Poovar Island. The team ensured seamless travel, great accommodations, and a stress-free journey. WoyTrip made my South India trip truly enjoyable and memorable. Highly recommended for a perfect travel experience!",
   },
-
 ];
 
 // Create duplicated items for seamless infinite scroll
@@ -96,7 +95,7 @@ const TestimonialCard = () => {
               key={`${testimonial.id}-${i}`}
               className="lg:min-w-[35%] sm:min-w-[60%] min-w-full bg-blue-50 p-6 rounded-2xl shadow-lg relative hover:scale-105"
             >
-                            {/* Testimonial Content */}
+              {/* Testimonial Content */}
               {/* <p className="text-gray-700 text-lg mt-6">{testimonial.message}</p> */}
               <p className="text-gray-700 text-lg mt-6 hidden md:block">
                 {testimonial.message}
@@ -112,7 +111,6 @@ const TestimonialCard = () => {
           ))}
         </motion.div>
       </div>
-
     </section>
   );
 };

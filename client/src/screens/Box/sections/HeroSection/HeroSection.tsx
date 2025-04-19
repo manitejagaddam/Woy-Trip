@@ -1,7 +1,7 @@
-import React from 'react';
-import { Navbar } from '../Navbar/Navbar';  // Import the Navbar component
+import React from "react";
+import { Navbar } from "../Navbar/Navbar"; // Import the Navbar component
 
-import hero from "../../../../assets/vedios/hero_section.mp4";  // Your video file
+import hero from "../../../../assets/vedios/hero_section.mp4"; // Your video file
 
 export const HeroSection = (): JSX.Element => {
   return (
@@ -17,8 +17,6 @@ export const HeroSection = (): JSX.Element => {
         <source src={hero} type="video/mp4" />
         Your browser does not support the video tag.
       </video>
-
-      
 
       {/* Navbar */}
       <Navbar />
@@ -39,9 +37,9 @@ export const HeroSection = (): JSX.Element => {
 
           {/* Description */}
           <p className="mt-6 text-gray-200 font-bold text-2xl md:text-2xl leading-relaxed max-w-3xl mx-auto">
-            Built Wicket longer admire do barton vanity itself do in it. Preferred
-            to sportsmen it engrossed listening. Park gate sell they west hard for
-            the.
+            Built Wicket longer admire do barton vanity itself do in it.
+            Preferred to sportsmen it engrossed listening. Park gate sell they
+            west hard for the.
           </p>
 
           {/* CTA Button */}
