@@ -19,7 +19,11 @@ export const Navbar = (): JSX.Element => {
     <header className="w-full py-5 bg-inherit">
       <div className="container mx-auto flex items-center justify-between px-12">
         {/* Logo Section */}
-        <img src={logo} alt="Logo" className="h-12 w-auto scale-125 " />
+        <img
+          src={logo}
+          alt="Logo"
+          className="h-12 w-auto scale-125 hover:scale-150 transition-transform duration-300 ease-in-out"
+        />
 
         {/* Desktop Navigation */}
         <nav className="hidden md:flex items-center gap-10">
@@ -27,7 +31,7 @@ export const Navbar = (): JSX.Element => {
             <a
               key={index}
               href={item.href}
-              className="font-medium text-white bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] py-2 px-6 rounded-lg text-lg hover:opacity-80 transition-all"
+              className="bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] text-white font-bold px-4 py-1 rounded-lg hover:opacity-80 transition-all"
             >
               {item.label}
             </a>
@@ -36,7 +40,7 @@ export const Navbar = (): JSX.Element => {
 
         {/* CTA Button for Desktop */}
         <a href="/#destinations">
-          <Button className="hidden md:block bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] text-white font-bold px-6 py-2 rounded-lg hover:opacity-80 transition-all">
+          <Button className="bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] text-white font-bold px-4 py-1 rounded-lg hover:opacity-80 transition-all">
             Make Trip
           </Button>
         </a>
@@ -64,7 +68,7 @@ export const Navbar = (): JSX.Element => {
               <a
                 key={index}
                 href={item.href}
-                className="font-medium text-white bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] py-1 px-4 rounded-lg text-lg hover:opacity-80 transition-all"
+                className="bg-gradient-to-r from-[#42a7c3] to-[#38d4ff] text-white font-bold px-4 py-1 rounded-lg hover:opacity-80 transition-all"
               >
                 {item.label}
               </a>
