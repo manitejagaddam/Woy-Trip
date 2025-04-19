@@ -37,7 +37,7 @@ export const About = (): JSX.Element => {
         <AboutUs />
 
         {/* Founder Section */}
-        <FoundersSection />
+        {/* <FoundersSection />  */}
 
         {/* Footer */}
         <Footer />

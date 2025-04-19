@@ -22,13 +22,13 @@ export const FoundersSection = (): JSX.Element => {
       {/* Main Content */}
       <div className="flex flex-col lg:flex-row w-full max-w-7xl gap-10 items-stretch justify-between">
         {/* Image Upload Box */}
-        <div className="flex flex-col w-full lg:w-1/2 gap-4 border-[7px] border-[#21b9fa] p-4 justify-center items-center bg-[#f4f4f4]">
+        {/* <div className="flex flex-col w-full lg:w-1/2 gap-4 border-[7px] border-[#21b9fa] p-4 justify-center items-center bg-[#f4f4f4]">
           <img
             src={image}
             alt="Founder"
             className="w-full h-[450px] object-cover"
           />
-        </div>
+        </div> */}
 
         {/* Description & Testimonial */}
         <div className="flex flex-col w-full lg:w-1/2 gap-6">
@@ -73,7 +73,7 @@ export const FoundersSection = (): JSX.Element => {
             </CardContent>
           </Card>
         </div>
-      </div>
+     </div>
     </section>
   );
 };
